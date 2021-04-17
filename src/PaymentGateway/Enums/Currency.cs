@@ -4,7 +4,6 @@ using Newtonsoft.Json.Converters;
 
 namespace PaymentGateway.Enums
 {
-    // [JsonConverter(typeof(StringEnumConverter))]
     public enum Currency
     {
         GBP = 1,

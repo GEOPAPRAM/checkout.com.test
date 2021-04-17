@@ -20,17 +20,17 @@ namespace PaymentGateway.Controllers
         }
 
         [HttpGet("{id:guid}")]
-        public async Task<PaymentContract> Get(Guid id)
+        public async Task<ActionResult<PaymentContract>> Get(Guid id)
         {
             var paymentResponse = await _paymentService.GetPayment(id);
-            return paymentResponse;
+            return paymentResponse == null ? NotFound(id) : Ok(paymentResponse);
         }
 
         [HttpPost]
         public async Task<ActionResult<PaymentContract>> Post([FromBody] PaymentContract payment)
         {
-            await _paymentService.MakePayment(payment);
-            return CreatedAtAction(nameof(Get), new { id = Guid.NewGuid() }, new PaymentContract());
+            var (success, paymentContract, errorMessage) = await _paymentService.MakePayment(payment);
+            return success ? CreatedAtAction(nameof(Get), new { id = Guid.NewGuid() }, paymentContract) : BadRequest(errorMessage);
         }
     }
 }

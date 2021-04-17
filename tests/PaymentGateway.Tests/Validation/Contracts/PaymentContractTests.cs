@@ -17,7 +17,7 @@ namespace PaymentGateway.Tests.Validation.Contracts
 
         [Theory]
         [ClassData(typeof(StringFieldsTestData))]
-        public void ValidatePaymentRequest_MissingStringFieldFailValidation(string cardNumber, string cvv, string expectedErrorMessage)
+        public void WhenRequiredStringFieldsAreMissing_ValidationFails(string cardNumber, string cvv, string expectedErrorMessage)
         {
             var target = new PaymentContract
             {

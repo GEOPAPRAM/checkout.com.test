@@ -15,7 +15,7 @@ namespace PaymentGateway.Domain
         public Merchant Merchant { get; set; }
         public string CardNumber
         {
-            get => Obfuscator.Replace(_cardNumber, "X", _cardNumber.Length - 4);
+            get => Obfuscator.Replace(_cardNumber.Substring(0, _cardNumber.Length - 4), "X") + _cardNumber.Substring(_cardNumber.Length - 4);
             set { _cardNumber = value; }
         }
 

@@ -11,7 +11,9 @@ namespace PaymentGateway.DependencyInjection
         {
             services.Configure<DbOptions>(configuration);
 
-            services.AddTransient<IPaymentRepository, PaymentRepository>();
+            services.AddSingleton<IPaymentRepository, PaymentRepository>();
+            services.AddSingleton<IAccountRepository, AccountRepository>();
+            services.AddSingleton<IBusinessRulesValidator, BusinessRulesValidator>();
             services.AddTransient<IPaymentService, PaymentService>();
         }
     }

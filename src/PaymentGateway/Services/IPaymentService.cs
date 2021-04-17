@@ -7,6 +7,6 @@ namespace PaymentGateway.Services
     public interface IPaymentService
     {
         Task<PaymentContract> GetPayment(Guid paymentId);
-        Task<(bool, PaymentContract, string)> MakePayment(PaymentContract payment);
+        Task<(bool Success, PaymentContract Data, string Errors)> MakePayment(PaymentContract payment);
     }
 }

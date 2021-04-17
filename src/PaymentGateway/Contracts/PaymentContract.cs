@@ -1,7 +1,7 @@
 using System;
 using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
+using PaymentGateway.Contracts.Attributes;
 using PaymentGateway.Enums;
 
 namespace PaymentGateway.Contracts
@@ -11,7 +11,16 @@ namespace PaymentGateway.Contracts
     /// </summary>
     public record PaymentContract
     {
+        /// <summary>
+        /// Unique identifier
+        /// </summary>
+        [JsonIgnoreOnDeserialize]
         public Guid Id { get; init; }
+
+        /// <summary>
+        /// Date of payment
+        /// </summary>
+        [JsonIgnoreOnDeserialize]
         public DateTime Date { get; init; }
         /// <summary>
         /// The amount paid.

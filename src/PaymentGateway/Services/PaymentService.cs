@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using PaymentGateway.Contracts;
@@ -11,9 +12,12 @@ namespace PaymentGateway.Services
     public class PaymentService : IPaymentService
     {
         private readonly IPaymentRepository _paymentRepository;
+        private readonly IBusinessRulesValidator _businessRulesValidator;
 
-        public PaymentService(IPaymentRepository paymentRepository)
+        public PaymentService(IPaymentRepository paymentRepository,
+                              IBusinessRulesValidator businessRulesValidator)
         {
+            _businessRulesValidator = businessRulesValidator;
             _paymentRepository = paymentRepository;
         }
         public async Task<PaymentContract> GetPayment(Guid paymentId)
@@ -22,12 +26,17 @@ namespace PaymentGateway.Services
             return payment == null ? default(PaymentContract) : ToContract(payment);
         }
 
-        public async Task<(bool, PaymentContract, string)> MakePayment(PaymentContract paymentContract)
+        public async Task<(bool Success, PaymentContract Data, string Errors)> MakePayment(PaymentContract paymentContract)
         {
+            var payment = ToDomain(paymentContract);
+            var validationErrors = string.Join("\n", _businessRulesValidator.Validate(payment));
+
+            if (validationErrors.Length > 0)
+                return (false, paymentContract, validationErrors);
             //TODO: Implement the following steps
             // 1. Get merchant object
             // 2. Create payment object with Pending status - OK
-            var payment = ToDomain(paymentContract);
+
             await _paymentRepository.Create(payment);
             // 3. Perofm payment transaction with the bank API
             // 4. Update payment record with the result - success/faild

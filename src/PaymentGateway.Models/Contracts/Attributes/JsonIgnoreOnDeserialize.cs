@@ -2,7 +2,7 @@ using System;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 
-namespace PaymentGateway.Contracts.Attributes
+namespace PaymentGateway.Models.Contracts.Attributes
 {
     /// <summary>
     /// Prevents deserialization of ignored property from JSON. Propert will still be serializat into JSON. 

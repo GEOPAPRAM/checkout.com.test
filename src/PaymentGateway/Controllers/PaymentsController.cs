@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using PaymentGateway.Contracts;
+using PaymentGateway.Models.Contracts;
 using PaymentGateway.Services;
 
 namespace PaymentGateway.Controllers

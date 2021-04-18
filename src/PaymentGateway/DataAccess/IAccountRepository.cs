@@ -1,5 +1,5 @@
 using System.Threading.Tasks;
-using PaymentGateway.Domain;
+using PaymentGateway.Models.Domain;
 
 namespace PaymentGateway.DataAccess
 {

@@ -1,6 +1,6 @@
 using System;
 using System.Collections.Generic;
-using PaymentGateway.Domain;
+using PaymentGateway.Models.Domain;
 
 namespace PaymentGateway.Services
 {

@@ -43,12 +43,10 @@ namespace PaymentGateway.Authentication
                 var identity = new ClaimsIdentity(claims, Scheme.Name);
                 var principal = new ClaimsPrincipal(identity);
                 var ticket = new AuthenticationTicket(principal, Scheme.Name);
-                //TODO: Logging for successful authentication attempt
                 return AuthenticateResult.Success(ticket);
             }
             catch (Exception ex)
             {
-                //TODO: Logging for unsuccessful authentication attempt
                 return AuthenticateResult.Fail($"Authentication failed: {ex.Message}");
             }
         }

@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using FluentAssertions;
-using PaymentGateway.Contracts;
-using PaymentGateway.Enums;
+using PaymentGateway.Models.Contracts;
+using PaymentGateway.Models.Enums;
 using Xunit;
 
 namespace PaymentGateway.Tests.Validation.Contracts

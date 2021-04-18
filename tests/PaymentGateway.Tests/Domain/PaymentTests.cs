@@ -1,6 +1,6 @@
 using System;
 using FluentAssertions;
-using PaymentGateway.Domain;
+using PaymentGateway.Models.Domain;
 using Xunit;
 
 namespace PaymentGateway.Tests.Domain

@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 using Dapper;
 using Microsoft.Extensions.Options;
 using MySqlConnector;
-using PaymentGateway.Domain;
+using PaymentGateway.Models.Domain;
 
 namespace PaymentGateway.DataAccess
 {

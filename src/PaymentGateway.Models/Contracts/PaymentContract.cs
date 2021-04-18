@@ -1,10 +1,10 @@
 using System;
 using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
-using PaymentGateway.Contracts.Attributes;
-using PaymentGateway.Enums;
+using PaymentGateway.Models.Contracts.Attributes;
+using PaymentGateway.Models.Enums;
 
-namespace PaymentGateway.Contracts
+namespace PaymentGateway.Models.Contracts
 {
     /// <summary>
     /// Represents payment details. <br/> Allows creation, storage and retrival of information regarding payment.

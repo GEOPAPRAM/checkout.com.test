@@ -2,7 +2,7 @@ using System;
 using System.Threading.Tasks;
 using FluentAssertions;
 using NSubstitute;
-using PaymentGateway.Contracts;
+using PaymentGateway.Models.Contracts;
 using PaymentGateway.DataAccess;
 using PaymentGateway.Services;
 using Xunit;

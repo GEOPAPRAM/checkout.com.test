@@ -1,8 +1,8 @@
 using System;
 using System.Text.RegularExpressions;
-using PaymentGateway.Enums;
+using PaymentGateway.Models.Enums;
 
-namespace PaymentGateway.Domain
+namespace PaymentGateway.Models.Domain
 {
     public class Payment
     {

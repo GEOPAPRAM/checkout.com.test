@@ -1,6 +1,6 @@
 using System;
 
-namespace PaymentGateway.Domain
+namespace PaymentGateway.Models.Domain
 {
     public class Merchant
     {

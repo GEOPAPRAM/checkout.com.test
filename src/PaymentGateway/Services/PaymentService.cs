@@ -2,10 +2,10 @@ using System;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using PaymentGateway.Contracts;
+using PaymentGateway.Models.Contracts;
 using PaymentGateway.DataAccess;
-using PaymentGateway.Domain;
-using PaymentGateway.Enums;
+using PaymentGateway.Models.Domain;
+using PaymentGateway.Models.Enums;
 
 namespace PaymentGateway.Services
 {

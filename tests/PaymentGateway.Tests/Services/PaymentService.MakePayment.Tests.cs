@@ -1,10 +1,8 @@
 using System;
-using System.Linq;
 using FluentAssertions;
 using NSubstitute;
 using PaymentGateway.DataAccess;
 using PaymentGateway.Integrations.Clients;
-using PaymentGateway.Models.Contracts;
 using PaymentGateway.Models.Domain;
 using PaymentGateway.Models.Enums;
 using PaymentGateway.Services;
@@ -12,25 +10,25 @@ using Xbehave;
 
 namespace PaymentGateway.Tests.Services
 {
-    public class PaymentServiceTests
+    public class PaymentServiceMakePaymentTests
     {
         IPaymentRepository _paymentRepository;
         IPaymentProviderFactory _paymentProviderFactory;
         IPaymentProvider _paymentProvider;
         PaymentService _target;
         Guid _merchantId;
-        PaymentContract _input;
+        Payment _input;
         Payment _persistedPayment;
         PaymentProcessResults _paymentProcessResults;
 
-        public PaymentServiceTests()
+        public PaymentServiceMakePaymentTests()
         {
-            _input = new PaymentContract
+            _input = new Payment
             {
                 Amount = 120.49m,
                 CardNumber = "1234-1234-1234-1234",
                 Currency = Currency.GBP,
-                CVV = "333",
+                CVV = 333,
                 ExpiryYear = DateTime.Now.Year + 1,
                 ExpiryMonth = DateTime.Now.Month + 1
             };
@@ -60,7 +58,7 @@ namespace PaymentGateway.Tests.Services
         }
 
         [Scenario]
-        public void MakePaymentSuccess((bool Success, PaymentContract Data, string Errors) response)
+        public void MakePaymentSuccess((bool Success, Payment Data, string Errors) response)
         {
             "And the input is valid"
                 .x(() => { });
@@ -83,12 +81,12 @@ namespace PaymentGateway.Tests.Services
         }
 
         [Scenario]
-        public void MakePaymentFailedDueToNegativeAmount((bool Success, PaymentContract Data, string Errors) response)
+        public void MakePaymentFailedDueToNegativeAmount((bool Success, Payment Data, string Errors) response)
         {
             "And the input has invalid negative Amount"
-                .x(() => _input = new PaymentContract
+                .x(() => _input = new Payment
                 {
-                    CVV = "333",
+                    CVV = 222,
                     Amount = -120.49m
                 });
             "When make payment is invoked"
@@ -102,12 +100,12 @@ namespace PaymentGateway.Tests.Services
         }
 
         [Scenario]
-        public void MakePaymentFailedDueToExpiredCard((bool Success, PaymentContract Data, string Errors) response)
+        public void MakePaymentFailedDueToExpiredCard((bool Success, Payment Data, string Errors) response)
         {
             "And the input has invalid negative Amount"
-                .x(() => _input = new PaymentContract
+                .x(() => _input = new Payment
                 {
-                    CVV = "333",
+                    CVV = 222,
                     ExpiryYear = 2000,
                     ExpiryMonth = 1
                 });
@@ -124,7 +122,8 @@ namespace PaymentGateway.Tests.Services
 
         [Scenario]
         [Example("Payment rejected. Credit card is blocked.")]
-        public void MakePaymentFailedDueToBlockedCard(string reason, (bool Success, PaymentContract Data, string Errors) response)
+        [Example("Payment rejected. Credit limit has been exceeded.")]
+        public void MakePaymentFailedDueToBlockedCard(string reason, (bool Success, Payment Data, string Errors) response)
         {
             "And the input is valid"
                 .x(() => { });
@@ -144,6 +143,5 @@ namespace PaymentGateway.Tests.Services
                     response.Errors.Should().Contain(reason);
                 });
         }
-
     }
 }

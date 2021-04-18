@@ -1,6 +1,5 @@
 using System;
 using System.Threading.Tasks;
-using PaymentGateway.Models.Contracts;
 using PaymentGateway.DataAccess;
 using PaymentGateway.Models.Domain;
 using PaymentGateway.Models.Enums;
@@ -22,21 +21,20 @@ namespace PaymentGateway.Services
             _businessRulesValidator = businessRulesValidator;
             _paymentRepository = paymentRepository;
         }
-        public async Task<PaymentContract> GetPayment(Guid paymentId)
+        public async Task<Models.Domain.Payment> GetPayment(Guid paymentId)
         {
             var payment = await _paymentRepository.Load(paymentId);
-            return payment == null ? default(PaymentContract) : ToContract(payment);
+            return payment;
         }
 
-        public async Task<(bool Success, PaymentContract Data, string Errors)> MakePayment(PaymentContract paymentContract, Guid merchantId)
+        public async Task<(bool Success, Payment Data, string Errors)> MakePayment(Payment payment, Guid merchantId)
         {
-            var validationErrors = string.Join("\n", _businessRulesValidator.Validate(paymentContract));
-
-            var payment = ToDomain(paymentContract, merchantId);
+            var validationErrors = string.Join("\n", _businessRulesValidator.Validate(payment));
 
             if (validationErrors.Length > 0)
-                return (false, paymentContract, validationErrors);
+                return (false, payment, validationErrors);
 
+            payment.Merchant = new Merchant { MerchantId = merchantId };
             await _paymentRepository.Create(payment);
 
             // Little silly business rule that allows the choice of payment provider
@@ -50,41 +48,7 @@ namespace PaymentGateway.Services
             payment.RejectionReasons = string.Join(Environment.NewLine, paymentProcessResults.RejectionReasons);
             await _paymentRepository.Update(payment);
 
-            var payload = ToContract(payment);
-
-            return (paymentProcessResults.Success, payload, payment.RejectionReasons);
-        }
-
-        private PaymentContract ToContract(Payment payment)
-        {
-            return new PaymentContract
-            {
-                Id = payment.PaymentId,
-                Date = payment.Date,
-                Amount = payment.Amount,
-                Currency = payment.Currency,
-                CardNumber = payment.CardNumber,
-                CVV = payment.CVV.ToString(),
-                ExpiryMonth = payment.ExpiryMonth,
-                ExpiryYear = payment.ExpiryYear
-            };
-        }
-
-        private Payment ToDomain(PaymentContract paymentContract, Guid merchantId, Guid? paymentId = default(Guid?))
-        {
-            return new Payment
-            {
-                PaymentId = paymentId.HasValue ? paymentId.Value : Guid.NewGuid(),
-                Date = DateTime.UtcNow,
-                Amount = paymentContract.Amount,
-                Currency = paymentContract.Currency,
-                CardNumber = paymentContract.CardNumber,
-                CVV = int.Parse(paymentContract.CVV),
-                ExpiryMonth = paymentContract.ExpiryMonth,
-                ExpiryYear = paymentContract.ExpiryYear,
-                Status = PaymentStatus.Pending,
-                Merchant = new Merchant { MerchantId = merchantId }
-            };
+            return (paymentProcessResults.Success, payment, payment.RejectionReasons);
         }
     }
 }

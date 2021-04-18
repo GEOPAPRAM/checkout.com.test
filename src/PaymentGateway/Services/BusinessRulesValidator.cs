@@ -1,12 +1,12 @@
 using System;
 using System.Collections.Generic;
-using PaymentGateway.Models.Contracts;
+using PaymentGateway.Models.Domain;
 
 namespace PaymentGateway.Services
 {
     public class BusinessRulesValidator : IBusinessRulesValidator
     {
-        public IEnumerable<string> Validate(PaymentContract payment)
+        public IEnumerable<string> Validate(Payment payment)
         {
             //Check card expiry date
             if (payment.ExpiryYear < DateTime.UtcNow.Year || payment.ExpiryMonth < DateTime.UtcNow.Month)

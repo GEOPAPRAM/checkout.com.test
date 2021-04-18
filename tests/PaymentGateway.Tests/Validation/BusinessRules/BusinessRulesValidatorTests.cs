@@ -1,6 +1,6 @@
 using System;
 using FluentAssertions;
-using PaymentGateway.Models.Contracts;
+using PaymentGateway.Models.Domain;
 using PaymentGateway.Services;
 using Xunit;
 
@@ -17,10 +17,9 @@ namespace PaymentGateway.Tests.Validation.BusinessRules
         [Fact]
         public void WhenInputIsValid_ReturnsNoErrors()
         {
-            var response = _target.Validate(new PaymentContract
+            var response = _target.Validate(new Payment
             {
                 CardNumber = "1234-1234-1234-1234",
-                CVV = "333",
                 Amount = 120.49m,
                 ExpiryYear = DateTime.Now.Year + 1,
                 ExpiryMonth = DateTime.Now.Month + 1
@@ -33,9 +32,8 @@ namespace PaymentGateway.Tests.Validation.BusinessRules
         public void WhenInputIsInvalid_ReturnsRuleValidationErrors()
         {
 
-            var response = _target.Validate(new PaymentContract
+            var response = _target.Validate(new Payment
             {
-                CVV = "333",
                 Amount = -120.49m,
                 ExpiryYear = 2000
             });

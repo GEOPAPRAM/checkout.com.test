@@ -1,12 +1,13 @@
-using System.Security.Claims;
 using System;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using PaymentGateway.Models.Contracts;
-using PaymentGateway.Services;
 using PaymentGateway.Authentication;
+using PaymentGateway.Models.Contracts;
+using PaymentGateway.Models.Mappings;
+using PaymentGateway.Services;
+
 
 namespace PaymentGateway.Controllers
 {
@@ -28,17 +29,17 @@ namespace PaymentGateway.Controllers
         [ProducesResponseType(404)]
         public async Task<ActionResult<PaymentContract>> Get(Guid id)
         {
-            var paymentResponse = await _paymentService.GetPayment(id);
-            return paymentResponse == null ? NotFound(id) : Ok(paymentResponse);
+            var payment = await _paymentService.GetPayment(id);
+            return payment == null ? NotFound(id) : Ok(payment.ToContract());
         }
 
         [HttpPost]
         [ProducesResponseType(201)]
         [ProducesResponseType(400)]
-        public async Task<ActionResult<PaymentContract>> Post([FromBody] PaymentContract payment)
+        public async Task<ActionResult<PaymentContract>> Post([FromBody] PaymentContract paymentContract)
         {
-            var (success, paymentContract, errorMessage) = await _paymentService.MakePayment(payment, User.GetMerchantId());
-            return success ? CreatedAtAction(nameof(Get), new { id = Guid.NewGuid() }, paymentContract) : BadRequest(errorMessage);
+            var (success, payment, errorMessage) = await _paymentService.MakePayment(paymentContract.ToDomain(), User.GetMerchantId());
+            return success ? CreatedAtAction(nameof(Get), new { id = Guid.NewGuid() }, payment.ToContract()) : BadRequest(errorMessage);
         }
     }
 }

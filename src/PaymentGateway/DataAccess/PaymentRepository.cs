@@ -22,7 +22,7 @@ namespace PaymentGateway.DataAccess
 
         public async Task Create(Payment payment)
         {
-            var sql = $@"INSERT INTO payments (PaymentId,PaymentDate,Amount,CurrencyCode,CardNumber,CVV,ExpirationMonth,ExpirationYear,PaymentStatus,MerchantId)
+            var sql = $@"INSERT INTO payments (PaymentId,PaymentDate,Amount,CurrencyCode,CardNumber,CVV,ExpiryMonth,ExpiryYear,PaymentStatus,MerchantId)
             VALUES (@PaymentId, @Date, @Amount, @Currency, @CardNumber, @CVV, @ExpiryMonth, @ExpiryYear, @Status, @MerchantId);";
             using var connection = new MySqlConnection(_config.ConnectionString);
             await connection.ExecuteAsync(sql, new
@@ -43,7 +43,9 @@ namespace PaymentGateway.DataAccess
         public async Task<Payment> Load(Guid paymentId)
         {
             using var connection = new MySqlConnection(_config.ConnectionString);
-            return await connection.QuerySingleOrDefaultAsync<Payment>("SELECT * FROM payments WHERE PaymentId=@paymentId", new { paymentId });
+            return await connection.QuerySingleOrDefaultAsync<Payment>($@"SELECT PaymentId,PaymentDate as Date,Amount,CurrencyCode,
+                CardNumber,CVV,ExpiryMonth,ExpiryYear,PaymentStatus as Status,MerchantId,Transaction,RejectionReasons 
+                FROM payments WHERE PaymentId=@paymentId", new { paymentId });
         }
 
         public async Task Update(Payment payment)

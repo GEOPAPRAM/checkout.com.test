@@ -1,10 +1,10 @@
 using System.Collections.Generic;
-using PaymentGateway.Models.Contracts;
+using PaymentGateway.Models.Domain;
 
 namespace PaymentGateway.Services
 {
     public interface IBusinessRulesValidator
     {
-        IEnumerable<string> Validate(PaymentContract paymentContract);
+        IEnumerable<string> Validate(Payment payment);
     }
 }

@@ -1,12 +1,12 @@
 using System;
 using System.Threading.Tasks;
-using PaymentGateway.Models.Contracts;
+using PaymentGateway.Models.Domain;
 
 namespace PaymentGateway.Services
 {
     public interface IPaymentService
     {
-        Task<PaymentContract> GetPayment(Guid paymentId);
-        Task<(bool Success, PaymentContract Data, string Errors)> MakePayment(PaymentContract payment, Guid merchantId);
+        Task<Payment> GetPayment(Guid paymentId);
+        Task<(bool Success, Payment Data, string Errors)> MakePayment(Payment payment, Guid merchantId);
     }
 }

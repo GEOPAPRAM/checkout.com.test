@@ -39,7 +39,7 @@ namespace PaymentGateway.Authentication
                 if (merchantAccount == null)
                     throw new ArgumentException("Invalid username or password");
 
-                var claims = new[] { new Claim(ClaimTypes.Name, username), new Claim("MerchantId", merchantAccount.MerchantId.ToString()) };
+                var claims = new[] { new Claim(ClaimTypes.Name, username), new Claim(CustomClaims.MerchantId, merchantAccount.MerchantId.ToString()) };
                 var identity = new ClaimsIdentity(claims, Scheme.Name);
                 var principal = new ClaimsPrincipal(identity);
                 var ticket = new AuthenticationTicket(principal, Scheme.Name);

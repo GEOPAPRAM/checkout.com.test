@@ -20,10 +20,10 @@ namespace PaymentGateway.Integrations.Extensions
             return Policy.WrapAsync(retryPolicy, circuitBreakerPolicy, timeoutPolicy);
         }
 
-        public static async Task OnRetry(DelegateResult<HttpResponseMessage> result, int retryTime)
+        public static Task OnRetry(DelegateResult<HttpResponseMessage> result, int retryTime)
         {
             //TODO: Log retries
-            await Task.CompletedTask;
+            return Task.CompletedTask;
         }
     }
 }

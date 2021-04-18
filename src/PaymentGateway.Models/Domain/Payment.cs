@@ -24,5 +24,7 @@ namespace PaymentGateway.Models.Domain
         public int CVV { get; set; }
 
         public PaymentStatus Status { get; set; }
+        public string Transaction { get; set; }
+        public string RejectionReasons { get; set; }
     }
 }

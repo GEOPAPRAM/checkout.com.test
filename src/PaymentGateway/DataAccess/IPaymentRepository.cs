@@ -6,7 +6,8 @@ namespace PaymentGateway.DataAccess
 {
     public interface IPaymentRepository
     {
-        Task<Payment> Get(Guid paymentId);
+        Task<Payment> Load(Guid paymentId);
         Task Create(Payment payment);
+        Task Update(Payment payment);
     }
 }

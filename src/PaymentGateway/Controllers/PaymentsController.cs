@@ -1,3 +1,4 @@
+using System.Security.Claims;
 using System;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
@@ -5,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using PaymentGateway.Models.Contracts;
 using PaymentGateway.Services;
+using PaymentGateway.Authentication;
 
 namespace PaymentGateway.Controllers
 {
@@ -35,7 +37,7 @@ namespace PaymentGateway.Controllers
         [ProducesResponseType(400)]
         public async Task<ActionResult<PaymentContract>> Post([FromBody] PaymentContract payment)
         {
-            var (success, paymentContract, errorMessage) = await _paymentService.MakePayment(payment);
+            var (success, paymentContract, errorMessage) = await _paymentService.MakePayment(payment, User.GetMerchantId());
             return success ? CreatedAtAction(nameof(Get), new { id = Guid.NewGuid() }, paymentContract) : BadRequest(errorMessage);
         }
     }

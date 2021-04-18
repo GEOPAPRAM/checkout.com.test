@@ -6,6 +6,7 @@ namespace PaymentGateway.Models.Enums
         EUR = 2,
         USD = 3,
         JPY = 4,
-        AUD = 5
+        AUD = 5,
+        CHF = 6
     }
 }

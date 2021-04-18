@@ -12,4 +12,8 @@
     <PackageReference Include="Polly" Version="7.2.2" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\PaymentGateway.Models\PaymentGateway.Models.csproj" />
+  </ItemGroup>
+
 </Project>

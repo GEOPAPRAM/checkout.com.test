@@ -1,12 +1,12 @@
 using System;
 using System.Collections.Generic;
-using PaymentGateway.Models.Domain;
+using PaymentGateway.Models.Contracts;
 
 namespace PaymentGateway.Services
 {
     public class BusinessRulesValidator : IBusinessRulesValidator
     {
-        public IEnumerable<string> Validate(Payment payment)
+        public IEnumerable<string> Validate(PaymentContract payment)
         {
             //Check card expiry date
             if (payment.ExpiryYear < DateTime.UtcNow.Year || payment.ExpiryMonth < DateTime.UtcNow.Month)
@@ -19,6 +19,7 @@ namespace PaymentGateway.Services
             //TODO: Here we keep it simple, but we may want to validate other business 
             // rules, like for instance different maximum abount per currency etc.
             // All such checks and limitation can be implemented as buseness rules.
+            // If rules become complems new BusinessRule class can be introduced.
         }
     }
 }

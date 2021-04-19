@@ -1,0 +1,1 @@
+docker run -p 5001:5001 -v /c/Users/<user_name>/.aspnet/https:/mnt/https paymentgateway:dev

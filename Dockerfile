@@ -12,4 +12,6 @@ ADD ./dist $HOME/
 EXPOSE 5000
 EXPOSE 5001
 
+COPY ./dev.pfx /certs/dev.pfx
+
 CMD ["/usr/share/dotnet/dotnet", "PaymentGateway.dll"]

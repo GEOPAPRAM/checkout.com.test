@@ -29,5 +29,5 @@ CREATE TABLE IF NOT EXISTS `payments` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
-INSERT INTO `Merchants` (`MerchantId`, `CompanyName`, `ClientName`, `Password`)
+INSERT INTO `merchants` (`MerchantId`, `CompanyName`, `ClientName`, `Password`)
 VALUES ('2f17ac7b-7e31-449b-aad0-451141663c28', 'Checkout', 'CheckoutUser', 'CheckoutPass');

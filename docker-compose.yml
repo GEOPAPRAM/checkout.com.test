@@ -1,0 +1,35 @@
+#
+version: '3.7'
+services:
+    paymentgateway: 
+        build: 
+            context: ./
+        image: paymentgateway:dev
+        container_name: paymentgateway_service
+        environment: 
+            - MYSQL_HOST=mysql-db
+            - MYSQL_PASSWORD=root
+            - PFX_PASS=supersecret
+            - PFX_PATH=/certs/dev.pfx
+        ports:
+            - 5001:5001
+        depends_on: 
+        - mysql-db
+        - flyway
+    
+    flyway:
+        image: dhoer/flyway
+        entrypoint: >
+            /bin/bash -c "sleep 20 && flyway -connectRetries=20 -url=jdbc:mysql://mysql-db -schemas=paymentgateway -user=root -password=root migrate"
+        volumes:
+            - /mnt/c/Work/GEOPAPRAM/checkout.com.test/DbSchema:/flyway/sql
+        depends_on:
+            - mysql-db
+    
+    mysql-db:
+        image: mysql
+        environment:
+            - MYSQL_ROOT_PASSWORD=root
+        command: --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+        ports:
+            - 3307:3306

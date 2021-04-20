@@ -1,0 +1,124 @@
+<assemblies timestamp="04/20/2021 22:39:13">
+  <assembly name="/mnt/c/Work/GEOPAPRAM/checkout.com.test/tests/PaymentGateway.Tests/bin/Debug/net5.0/PaymentGateway.Tests.dll" run-date="2021-04-20" run-time="22:39:13" total="37" passed="37" failed="0" skipped="0" time="1.849" errors="0">
+    <errors />
+    <collection total="3" passed="3" failed="0" skipped="0" name="Test collection for PaymentGateway.Tests.Domain.PaymentTests" time="0.013">
+      <test name="PaymentGateway.Tests.Domain.PaymentTests.WhenCardNumberPropertyIsAccessed_ReturnsCardNumberWithOnlyFourLastDigitsVisible(given: &quot;1234-5678-9101-1121&quot;, expected: &quot;XXXX-XXXX-XXXX-1121&quot;)" type="PaymentGateway.Tests.Domain.PaymentTests" method="WhenCardNumberPropertyIsAccessed_ReturnsCardNumberWithOnlyFourLastDigitsVisible" time="0.0131018" result="Pass">
+        <traits />
+      </test>
+      <test name="PaymentGateway.Tests.Domain.PaymentTests.WhenCardNumberPropertyIsAccessed_ReturnsCardNumberWithOnlyFourLastDigitsVisible(given: &quot;1234567891011121&quot;, expected: &quot;XXXXXXXXXXXX1121&quot;)" type="PaymentGateway.Tests.Domain.PaymentTests" method="WhenCardNumberPropertyIsAccessed_ReturnsCardNumberWithOnlyFourLastDigitsVisible" time="0.0001383" result="Pass">
+        <traits />
+      </test>
+      <test name="PaymentGateway.Tests.Domain.PaymentTests.WhenCardNumberPropertyIsAccessed_ReturnsCardNumberWithOnlyFourLastDigitsVisible(given: &quot;1234 5678 9101 1121&quot;, expected: &quot;XXXX XXXX XXXX 1121&quot;)" type="PaymentGateway.Tests.Domain.PaymentTests" method="WhenCardNumberPropertyIsAccessed_ReturnsCardNumberWithOnlyFourLastDigitsVisible" time="0.0000148" result="Pass">
+        <traits />
+      </test>
+    </collection>
+    <collection total="24" passed="24" failed="0" skipped="0" name="Test collection for PaymentGateway.Tests.Services.PaymentServiceMakePaymentTests" time="0.012">
+      <test name="PaymentGateway.Tests.Services.PaymentServiceMakePaymentTests.MakePaymentSuccess" type="PaymentGateway.Tests.Services.PaymentServiceMakePaymentTests" method="MakePaymentSuccess" time="0.0004556" result="Pass">
+        <traits />
+      </test>
+      <test name="PaymentGateway.Tests.Services.PaymentServiceMakePaymentTests.MakePaymentSuccess" type="PaymentGateway.Tests.Services.PaymentServiceMakePaymentTests" method="MakePaymentSuccess" time="0.0000402" result="Pass">
+        <traits />
+      </test>
+      <test name="PaymentGateway.Tests.Services.PaymentServiceMakePaymentTests.MakePaymentSuccess" type="PaymentGateway.Tests.Services.PaymentServiceMakePaymentTests" method="MakePaymentSuccess" time="0.0000515" result="Pass">
+        <traits />
+      </test>
+      <test name="PaymentGateway.Tests.Services.PaymentServiceMakePaymentTests.MakePaymentSuccess" type="PaymentGateway.Tests.Services.PaymentServiceMakePaymentTests" method="MakePaymentSuccess" time="0.0066620" result="Pass">
+        <traits />
+      </test>
+      <test name="PaymentGateway.Tests.Services.PaymentServiceMakePaymentTests.MakePaymentSuccess" type="PaymentGateway.Tests.Services.PaymentServiceMakePaymentTests" method="MakePaymentSuccess" time="0.0022602" result="Pass">
+        <traits />
+      </test>
+      <test name="PaymentGateway.Tests.Services.PaymentServiceMakePaymentTests.MakePaymentSuccess" type="PaymentGateway.Tests.Services.PaymentServiceMakePaymentTests" method="MakePaymentSuccess" time="0.0002678" result="Pass">
+        <traits />
+      </test>
+      <test name="PaymentGateway.Tests.Services.PaymentServiceMakePaymentTests.MakePaymentFailedDueToExpiredCard" type="PaymentGateway.Tests.Services.PaymentServiceMakePaymentTests" method="MakePaymentFailedDueToExpiredCard" time="0.0000166" result="Pass">
+        <traits />
+      </test>
+      <test name="PaymentGateway.Tests.Services.PaymentServiceMakePaymentTests.MakePaymentFailedDueToExpiredCard" type="PaymentGateway.Tests.Services.PaymentServiceMakePaymentTests" method="MakePaymentFailedDueToExpiredCard" time="0.0000665" result="Pass">
+        <traits />
+      </test>
+      <test name="PaymentGateway.Tests.Services.PaymentServiceMakePaymentTests.MakePaymentFailedDueToExpiredCard" type="PaymentGateway.Tests.Services.PaymentServiceMakePaymentTests" method="MakePaymentFailedDueToExpiredCard" time="0.0004308" result="Pass">
+        <traits />
+      </test>
+      <test name="PaymentGateway.Tests.Services.PaymentServiceMakePaymentTests.MakePaymentFailedDueToExpiredCard" type="PaymentGateway.Tests.Services.PaymentServiceMakePaymentTests" method="MakePaymentFailedDueToExpiredCard" time="0.0003083" result="Pass">
+        <traits />
+      </test>
+      <test name="PaymentGateway.Tests.Services.PaymentServiceMakePaymentTests.MakePaymentFailedDueToNegativeAmount" type="PaymentGateway.Tests.Services.PaymentServiceMakePaymentTests" method="MakePaymentFailedDueToNegativeAmount" time="0.0000163" result="Pass">
+        <traits />
+      </test>
+      <test name="PaymentGateway.Tests.Services.PaymentServiceMakePaymentTests.MakePaymentFailedDueToNegativeAmount" type="PaymentGateway.Tests.Services.PaymentServiceMakePaymentTests" method="MakePaymentFailedDueToNegativeAmount" time="0.0000819" result="Pass">
+        <traits />
+      </test>
+      <test name="PaymentGateway.Tests.Services.PaymentServiceMakePaymentTests.MakePaymentFailedDueToNegativeAmount" type="PaymentGateway.Tests.Services.PaymentServiceMakePaymentTests" method="MakePaymentFailedDueToNegativeAmount" time="0.0003254" result="Pass">
+        <traits />
+      </test>
+      <test name="PaymentGateway.Tests.Services.PaymentServiceMakePaymentTests.MakePaymentFailedDueToNegativeAmount" type="PaymentGateway.Tests.Services.PaymentServiceMakePaymentTests" method="MakePaymentFailedDueToNegativeAmount" time="0.0001781" result="Pass">
+        <traits />
+      </test>
+      <test name="PaymentGateway.Tests.Services.PaymentServiceMakePaymentTests.MakePaymentFailedDueToBlockedCard" type="PaymentGateway.Tests.Services.PaymentServiceMakePaymentTests" method="MakePaymentFailedDueToBlockedCard" time="0.0000178" result="Pass">
+        <traits />
+      </test>
+      <test name="PaymentGateway.Tests.Services.PaymentServiceMakePaymentTests.MakePaymentFailedDueToBlockedCard" type="PaymentGateway.Tests.Services.PaymentServiceMakePaymentTests" method="MakePaymentFailedDueToBlockedCard" time="0.0000368" result="Pass">
+        <traits />
+      </test>
+      <test name="PaymentGateway.Tests.Services.PaymentServiceMakePaymentTests.MakePaymentFailedDueToBlockedCard" type="PaymentGateway.Tests.Services.PaymentServiceMakePaymentTests" method="MakePaymentFailedDueToBlockedCard" time="0.0001408" result="Pass">
+        <traits />
+      </test>
+      <test name="PaymentGateway.Tests.Services.PaymentServiceMakePaymentTests.MakePaymentFailedDueToBlockedCard" type="PaymentGateway.Tests.Services.PaymentServiceMakePaymentTests" method="MakePaymentFailedDueToBlockedCard" time="0.0005807" result="Pass">
+        <traits />
+      </test>
+      <test name="PaymentGateway.Tests.Services.PaymentServiceMakePaymentTests.MakePaymentFailedDueToBlockedCard" type="PaymentGateway.Tests.Services.PaymentServiceMakePaymentTests" method="MakePaymentFailedDueToBlockedCard" time="0.0001683" result="Pass">
+        <traits />
+      </test>
+      <test name="PaymentGateway.Tests.Services.PaymentServiceMakePaymentTests.MakePaymentFailedDueToBlockedCard" type="PaymentGateway.Tests.Services.PaymentServiceMakePaymentTests" method="MakePaymentFailedDueToBlockedCard" time="0.0000150" result="Pass">
+        <traits />
+      </test>
+      <test name="PaymentGateway.Tests.Services.PaymentServiceMakePaymentTests.MakePaymentFailedDueToBlockedCard" type="PaymentGateway.Tests.Services.PaymentServiceMakePaymentTests" method="MakePaymentFailedDueToBlockedCard" time="0.0000006" result="Pass">
+        <traits />
+      </test>
+      <test name="PaymentGateway.Tests.Services.PaymentServiceMakePaymentTests.MakePaymentFailedDueToBlockedCard" type="PaymentGateway.Tests.Services.PaymentServiceMakePaymentTests" method="MakePaymentFailedDueToBlockedCard" time="0.0000023" result="Pass">
+        <traits />
+      </test>
+      <test name="PaymentGateway.Tests.Services.PaymentServiceMakePaymentTests.MakePaymentFailedDueToBlockedCard" type="PaymentGateway.Tests.Services.PaymentServiceMakePaymentTests" method="MakePaymentFailedDueToBlockedCard" time="0.0000679" result="Pass">
+        <traits />
+      </test>
+      <test name="PaymentGateway.Tests.Services.PaymentServiceMakePaymentTests.MakePaymentFailedDueToBlockedCard" type="PaymentGateway.Tests.Services.PaymentServiceMakePaymentTests" method="MakePaymentFailedDueToBlockedCard" time="0.0000070" result="Pass">
+        <traits />
+      </test>
+    </collection>
+    <collection total="2" passed="2" failed="0" skipped="0" name="Test collection for PaymentGateway.Tests.Validation.BusinessRules.BusinessRulesValidatorTests" time="0.008">
+      <test name="PaymentGateway.Tests.Validation.BusinessRules.BusinessRulesValidatorTests.WhenInputIsInvalid_ReturnsRuleValidationErrors" type="PaymentGateway.Tests.Validation.BusinessRules.BusinessRulesValidatorTests" method="WhenInputIsInvalid_ReturnsRuleValidationErrors" time="0.0044780" result="Pass">
+        <traits />
+      </test>
+      <test name="PaymentGateway.Tests.Validation.BusinessRules.BusinessRulesValidatorTests.WhenInputIsValid_ReturnsNoErrors" type="PaymentGateway.Tests.Validation.BusinessRules.BusinessRulesValidatorTests" method="WhenInputIsValid_ReturnsNoErrors" time="0.0036694" result="Pass">
+        <traits />
+      </test>
+    </collection>
+    <collection total="8" passed="8" failed="0" skipped="0" name="Test collection for PaymentGateway.Tests.Validation.Contracts.PaymentContractTests" time="0.009">
+      <test name="PaymentGateway.Tests.Validation.Contracts.PaymentContractTests.WhenRequiredStringFieldsAreMissing_ValidationFails(cardNumber: &quot;4916-5993-6736-4789&quot;, cvv: &quot;&quot;, expectedErrorMessage: &quot;The CVV field is required.&quot;)" type="PaymentGateway.Tests.Validation.Contracts.PaymentContractTests" method="WhenRequiredStringFieldsAreMissing_ValidationFails" time="0.0077655" result="Pass">
+        <traits />
+      </test>
+      <test name="PaymentGateway.Tests.Validation.Contracts.PaymentContractTests.WhenRequiredStringFieldsAreMissing_ValidationFails(cardNumber: &quot;4916-5993-6736-4789&quot;, cvv: null, expectedErrorMessage: &quot;The CVV field is required.&quot;)" type="PaymentGateway.Tests.Validation.Contracts.PaymentContractTests" method="WhenRequiredStringFieldsAreMissing_ValidationFails" time="0.0001526" result="Pass">
+        <traits />
+      </test>
+      <test name="PaymentGateway.Tests.Validation.Contracts.PaymentContractTests.WhenRequiredStringFieldsAreMissing_ValidationFails(cardNumber: null, cvv: &quot;123&quot;, expectedErrorMessage: &quot;The CardNumber field is required.&quot;)" type="PaymentGateway.Tests.Validation.Contracts.PaymentContractTests" method="WhenRequiredStringFieldsAreMissing_ValidationFails" time="0.0004231" result="Pass">
+        <traits />
+      </test>
+      <test name="PaymentGateway.Tests.Validation.Contracts.PaymentContractTests.WhenRequiredStringFieldsAreMissing_ValidationFails(cardNumber: &quot;4916-5993-6736-4789&quot;, cvv: &quot;abc&quot;, expectedErrorMessage: &quot;Not valid card verification value&quot;)" type="PaymentGateway.Tests.Validation.Contracts.PaymentContractTests" method="WhenRequiredStringFieldsAreMissing_ValidationFails" time="0.0001203" result="Pass">
+        <traits />
+      </test>
+      <test name="PaymentGateway.Tests.Validation.Contracts.PaymentContractTests.WhenRequiredStringFieldsAreMissing_ValidationFails(cardNumber: &quot;4916-5993-6736-4789&quot;, cvv: &quot;   &quot;, expectedErrorMessage: &quot;The CVV field is required.&quot;)" type="PaymentGateway.Tests.Validation.Contracts.PaymentContractTests" method="WhenRequiredStringFieldsAreMissing_ValidationFails" time="0.0000525" result="Pass">
+        <traits />
+      </test>
+      <test name="PaymentGateway.Tests.Validation.Contracts.PaymentContractTests.WhenRequiredStringFieldsAreMissing_ValidationFails(cardNumber: &quot;1234-5678-9101-1121&quot;, cvv: &quot;123&quot;, expectedErrorMessage: &quot;Not valid card number&quot;)" type="PaymentGateway.Tests.Validation.Contracts.PaymentContractTests" method="WhenRequiredStringFieldsAreMissing_ValidationFails" time="0.0000425" result="Pass">
+        <traits />
+      </test>
+      <test name="PaymentGateway.Tests.Validation.Contracts.PaymentContractTests.WhenRequiredStringFieldsAreMissing_ValidationFails(cardNumber: &quot;   &quot;, cvv: &quot;123&quot;, expectedErrorMessage: &quot;The CardNumber field is required.&quot;)" type="PaymentGateway.Tests.Validation.Contracts.PaymentContractTests" method="WhenRequiredStringFieldsAreMissing_ValidationFails" time="0.0000472" result="Pass">
+        <traits />
+      </test>
+      <test name="PaymentGateway.Tests.Validation.Contracts.PaymentContractTests.WhenRequiredStringFieldsAreMissing_ValidationFails(cardNumber: &quot;&quot;, cvv: &quot;123&quot;, expectedErrorMessage: &quot;The CardNumber field is required.&quot;)" type="PaymentGateway.Tests.Validation.Contracts.PaymentContractTests" method="WhenRequiredStringFieldsAreMissing_ValidationFails" time="0.0000333" result="Pass">
+        <traits />
+      </test>
+    </collection>
+  </assembly>
+</assemblies>
